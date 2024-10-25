@@ -12,7 +12,7 @@ substitutions:
   slug: garage_dryer
   name: Garage Dryer
   description: Monitors our dryer. It can also tell if it is running or not.
-  api_password: !secret esphome_garage_dryer_api_password
+  encryption_key: !secret esphome_garage_dryer_encryption_key
   ota_password: !secret esphome_garage_dryer_ota_password
 
 packages:
@@ -31,6 +31,7 @@ binary_sensor:
   # This binary sensor tells if the dryer is running or not
   - platform: template
     id: running
+    device_class: running
     name: "${name} Running"
     filters:
       - delayed_off: 40s
